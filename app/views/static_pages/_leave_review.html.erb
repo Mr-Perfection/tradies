@@ -1,0 +1,19 @@
+<% if cookies.signed[:review_post_id] && cookies.signed[:review_post_interested_user_id] %>
+	<!-- Modal -->
+	<div class="modal fade" id="leave-a-review" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title text-center" id="myModalLabel">Leave a Review!</h3>
+	      </div>
+	      <div class="modal-body">
+	      	<p>It seems like you forgot to leave a review on your recently purchased item on <strong><i>Tradies</i></strong>!</p>
+	        <p>Please, leave a review by clicking a button below.</strong></p>
+	      </div>
+	      <div class="modal-footer">
+			<%= link_to "Leave a Review", new_user_review_path(user_id: @post.user_id), class:"btn btn-secondary"%>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+<% end %>

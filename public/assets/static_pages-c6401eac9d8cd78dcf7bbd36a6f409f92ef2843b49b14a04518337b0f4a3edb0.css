@@ -1,0 +1,147 @@
+/* line 5, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.page-header {
+  border-bottom: 0px solid #eeeeee;
+}
+
+/* line 9, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+button.close {
+  color: white;
+}
+
+/* line 10, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.badge {
+  background-color: #0a3c6d;
+  color: white;
+}
+
+/* line 12, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.notifications-count .badge {
+  background-color: white;
+  color: #0a3c6d;
+}
+
+/* line 16, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.label-default {
+  background-color: #0a3c6d;
+}
+
+/* line 17, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+li {
+  font-family: avenir, 'avenir next';
+  font-size: 1.4em;
+}
+
+/* line 19, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.help-content {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+/* line 22, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.help-content p {
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+/* line 28, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+#posts {
+  -webkit-animation-duration: 1.0s;
+  -webkit-animation-delay: 1.1s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-duration: 1.0s;
+  -moz-animation-delay: 1.1s;
+  -moz-animation-iteration-count: 1;
+}
+
+/* line 36, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.locations {
+  -webkit-animation-duration: 1.0s;
+  -webkit-animation-delay: 0.8s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-duration: 0.8s;
+  -moz-animation-delay: 0.8s;
+  -moz-animation-iteration-count: 1;
+}
+
+/* line 49, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.search-bar {
+  -webkit-animation-duration: 1.0s;
+  -webkit-animation-delay: 1.3s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-duration: 1.0s;
+  -moz-animation-delay: 1.3s;
+  -moz-animation-iteration-count: 1;
+}
+
+/* line 58, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.categories {
+  -webkit-animation-duration: 1.0s;
+  -webkit-animation-delay: 0.8s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-duration: 1.0s;
+  -moz-animation-delay: 0.8s;
+  -moz-animation-iteration-count: 1;
+}
+
+/* line 68, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.about-profile {
+  margin-left: 8%;
+}
+/* line 72, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.about-profile p {
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+/* line 77, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.about-profile-content {
+  margin-top: 20px;
+}
+
+/* line 84, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+h1 .logo {
+  color: #0a3c6d;
+  font-weight: bold;
+  font-style: italic;
+}
+/* line 88, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+h1 .logo:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 93, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.home {
+  padding-left: 15%;
+  padding-bottom: 5%;
+  padding-right: 15%;
+}
+/* line 97, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.home .input-group {
+  display: table;
+}
+
+/* line 101, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.hideOverflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: block;
+}
+
+/* line 109, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.breakword {
+  word-wrap: break-word;
+}
+
+/* line 142, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.search-home .input-group .input-group-addon,
+.search-home .input-group .input-group-btn {
+  white-space: nowrap;
+  width: 1%;
+}
+
+/* line 147, /Users/StephenLee/sites/tradies/app/assets/stylesheets/static_pages.scss */
+.search-home .input-group .form-control {
+  width: 100%;
+}

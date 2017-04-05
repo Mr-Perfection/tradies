@@ -1,0 +1,27 @@
+<% page_header @message_title %>
+<div class="container container-large">
+  <div class="row" id="new-message">
+    <div class="col-xs-10 col-lg-8 col-md-8 col-sm-10 col-md-offset-2 col-lg-offset-2 col-sm-offset-1 col-xs-offset-1">
+      <%= form_tag messages_path, method: :post do %>
+        <div class="form-group">
+          <%= label_tag 'message[subject]', 'Subject' %>
+          <%= text_field_tag 'message[subject]', nil, value: @message_objective, readonly: true, class: 'form-control', required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag 'message[body]', 'Message' %>
+          <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+        </div>
+
+        <!-- <div class="form-group">
+          <%= label_tag 'recipients', 'Choose recipients' %>
+          <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
+        </div> -->
+        <%= submit_tag 'Send', class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+  <script>
+    $('#new-message').addClass('animated fadeIn');
+  </script>

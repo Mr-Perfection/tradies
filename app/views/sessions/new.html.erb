@@ -1,0 +1,25 @@
+<% provide(:title, "Log In") %>
+<% page_header "Log In" %>
+
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2" id="user-login">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %> <b><i><%= link_to " (forgot your password? Click here.)", new_password_reset_path %></i></b>
+      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
+      <%= f.submit "Log In", class: "btn btn-default"%>
+    <% end %>
+
+    <p><em><%= link_to signup_path do %><span class="glyphicon glyphicon-fire"></span> New user? Sign Up Now!<%end%></em></p>
+  </div>
+</div>
+<script>
+  $('#user-login').addClass('animated fadeIn');
+</script>

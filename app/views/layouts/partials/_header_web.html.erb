@@ -1,0 +1,98 @@
+<div class="navbar-header">
+  <div class="col-xs-2 col-sm-2">
+    <% if logged_in?%>
+      <%= link_to "Tradies", home_path, class: "navbar-brand", id: "logo"  %>
+    <% else %>
+      <%= link_to "Tradies", root_path, class: "navbar-brand", id: "logo"  %>
+    <% end %>
+  </div>
+  <%if logged_in? %>
+    <div class="pull-right">
+      <div class="dropdown pull-right">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-2x fa-align-justify" aria-hidden="true"></i>
+            <span class="notifications-count">
+              <span class="badge"><%=count_unread_messages%></span>
+            </span>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="/conversations"><span class="glyphicon glyphicon-comment"></span> Conversations <span class="notifications-count"><span class="badge"><%=count_unread_messages%></span></span></a></li>
+            <li><%= link_to "/users/posts/#{current_user.id}" do %><span class="glyphicon glyphicon-stats"></span> Activities<%end%></li>
+            <li><%= link_to current_user do %><span class="glyphicon glyphicon-user"></span> Profile<%end%></li>
+            <li><%= link_to edit_user_path(current_user) do %><span class="glyphicon glyphicon-cog"></span> Settings<%end%></li>
+            <li class="divider"></li>
+            <li><%= link_to logout_path, method: "delete" do %><span class="glyphicon glyphicon-off"></span> Log out<%end%></li>
+          </ul>
+        </div>
+    </div>
+    <div id="ask-us-button">
+      <a href="#" data-toggle="modal" data-target="#ask-us-form" class="btn btn-default create-post"><i class="fa fa-handshake-o" aria-hidden="true"></i>
+       Ask Us</a> 
+       <%= render 'shared/ask_us_form'%>
+      <script>
+        $('#ask-us-form').appendTo("body").dialog({modal: true});
+      </script>
+    </div>
+    <div id="show_content">
+      <div id="create-post-button">
+        <a href="#" data-toggle="modal" data-target="#post-form" class="btn btn-default create-post"><span class="glyphicon glyphicon-edit"></span> Post</a> 
+            <%= render 'shared/post_form_modal', post: current_user.posts.includes(:post_attachments).build %>
+        <script>
+          $('#post-form').appendTo("body").dialog({modal: true});
+        </script>
+      </div>
+    </div>
+  <% else %>
+    <div class="pull-right">
+      <div class="login">
+        <%= link_to login_path do %><span class="glyphicon glyphicon-off"></span> Log in<%end%>
+      </div>
+    </div>
+    <div class="col-xs-7 col-sm-8"></div>
+  <% end %>
+  <div class="col-xs-12 col-sm-8">
+    <%= form_for home_path, class: 'home', role: 'search', method: :get do |f| %>
+      <div class="form-group" style="display:inline;">
+        <div class="input-group input-group-md">
+          <%= text_field_tag :q, params[:q], placeholder: "Type anything that you want to purchase...",class: 'form-control hideOverflow', type: "search" %>
+          <%= select_tag "category", options_from_collection_for_select(Category.all, "title", "title"),include_blank: true, class: 'form-control hideOverflow', type: "search" %>
+          <%if logged_in? %>
+            <%= select_tag "location", options_for_select(["All Cities",'Berkeley, CA','Fremont, CA', 'Hayward, CA', 'Oakland, CA', 'Mountain View, CA', 'Milpitas, CA', 'Palo Alto, CA', 'San Francisco, CA', 'Sacramento, CA', 'Santa Clara, CA', 'San Jose, CA','San Mateo, CA', 'Union City, CA'], current_user.current_location),class: 'form-control hideOverflow', type: "search" %>
+          <% else %>
+            <%= select_tag "location", options_for_select(["All Cities",'Berkeley, CA','Fremont, CA', 'Hayward, CA', 'Oakland, CA', 'Mountain View, CA', 'Milpitas, CA', 'Palo Alto, CA', 'San Francisco, CA', 'Sacramento, CA', 'Santa Clara, CA', 'San Jose, CA','San Mateo, CA', 'Union City, CA'], cookies[:location_query]),class: 'form-control hideOverflow', type: "search" %>
+          <% end %>
+          <span class="input-group-addon"><%= submit_tag "Search", class: "btn-transparent"%></span>
+        </div>
+      </div>
+    <% end %>
+    <% if logged_in? && (!current_user.has_valid_wepay_access_token? || !current_user.has_wepay_account?)%>
+      <div class="text-center">
+        <a href="<%= current_user.wepay_authorization_url(url_for(:controller => 'users', :action => 'oauth', :id => current_user.id, :host => request.host_with_port)) %>"><i>Create WePay account to enable Tradies Checkout</i></a>
+         <a href="" class= "btn btn-default" data-toggle="modal" data-target="#why-wepay"><i>Why WePay? </i></a>
+                <%= render 'shared/why_we_pay'%>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <a>&zwnj;</a>
+      </div>
+    <% end%>
+  </div>
+</div>
+
+<script>
+  
+  $( document ).on('turbolinks:load', function() {
+     $('select#category').select2({ 
+            width: '60%', 
+            dropdownAutoWidth : true, 
+            placeholder: "Choose a category",
+            maximumSelectionLength: 3
+      }); 
+      $('select#location').select2({
+          width: '40%', 
+          dropdownAutoWidth : true
+      });
+      Turbolinks.clearCache();
+  });
+</script>

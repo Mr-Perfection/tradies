@@ -1,0 +1,31 @@
+<% if !cookies[:location_query].present? %>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<%= render 'static_pages/locations'%>
+    	</div>
+	</div>
+<% else %>
+	<div class="search-bar">
+    	<div class="row">
+    		<div class="col-xs-10 col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-xs-offset-1">
+    			<% if cookies[:location_query].present? %>
+			  		<p class="text-center">
+			  			<strong>Your current location is <%= link_to '/change_location', class: "change_location", data: {confirm: "Do you want to change the location?"} do%><span class="glyphicon glyphicon-map-marker" id="change_location"></span><%= cookies[:location_query]%></strong><%end%>
+			  		</p>
+				<%end %>
+		    	<%= form_for home_path, class: 'home', role: 'search', method: :get do |f| %>
+					<div class="form-group" style="display:inline;">
+			        	<div class="input-group input-group-lg">
+			        		<%= text_field_tag :q, params[:query], placeholder: "Type anything that you want to purchase...",class: 'form-control hideOverflow', required: true %>
+				    		<span class="input-group-addon" data-toggle="popover" title="How to search?" data-content="Type something in the input field and press Enter." data-placement="bottom"><span class="glyphicon glyphicon-search"></span></span>
+			        	</div>
+			        </div>
+		        <% end %>
+		    </div>
+	    </div>
+    </div>
+	<!-- categories -->
+	<div class="row">
+		<%= render 'static_pages/categories'%>	
+	</div>
+<% end %>

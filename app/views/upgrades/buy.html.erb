@@ -1,0 +1,29 @@
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><span class="glyphicon glyphicon-refresh"></span></strong> Refresh your page if you don't see the credit card form from WePay.
+</div>
+<!-- <div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><span class="glyphicon glyphicon-bullhorn"></span></strong> For mobile users, there is an issue with the form that will redirect you to the another form to fill your card information again. Do not worry because We are fully aware of this issue and will fix this soon. Please, use your laptop if possible for now.
+</div> -->
+<div class="col-lg-10 col-md-10 col-sm-10 col-md-offset-1">
+	<ul class="list-group">
+	  <li class="list-group-item"><h3>Buy a <%= @upgrade.name %> boost from Tradies, LLC for <%= number_to_currency(@upgrade.price, :unit => "$")%></h3></li>
+	  <li class="list-group-item"><div id="wepay_checkout"></div></li>
+	  <li class="list-group-item"><p><%= link_to "My bad, wrong boost!", upgrades_path, class: 'btn btn-danger btn-medium' %></p></li>
+	</ul>
+</div>
+<script type="text/javascript" src="https://www.wepay.com/min/js/iframe.wepay.js">
+</script>
+
+<script type="text/javascript">
+ //    WePay.iframe_checkout("wepay_checkout", "<%=@checkout['hosted_checkout']['checkout_uri']%>");
+ //    document.addEventListener("turbolinks:load", function() {
+ //  		my_func();
+	// })
+	var checkout_func;
+	checkout_func = function() {
+		WePay.iframe_checkout("wepay_checkout", "<%=@checkout['hosted_checkout']['checkout_uri']%>");
+	};
+	checkout_func();
+</script>

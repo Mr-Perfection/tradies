@@ -1,0 +1,11 @@
+
+<script type="text/javascript">
+$( document ).on('turbolinks:load', function() {
+    $('[data-toggle="maps-popover"]').popover({
+        placement : 'bottom',
+		trigger : 'hover',
+        html : true,
+        content : '<div class="map-responsive"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=@post.latitude%>,<%=@post.longitude%>&markers=<%=@post.latitude%>,<%=@post.longitude%>&zoom=15&size=600x450" class: "img-responsive img-rounded" alt="<%=@post.street_address%> on the map"></img></div>'
+    });
+});
+</script>

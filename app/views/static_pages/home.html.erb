@@ -1,0 +1,83 @@
+<% provide(:title, 'Home') %>
+<% provide(:buttom_text, 'Create my account')%>
+<div class="container container-medium">
+	<div class="row">
+		<div id="posts">
+			<% if @featured_posts.present? %>
+				<div id="featured-items-section">
+					<h3 class="profile-label">Featured Items <span class="badge" id="posts-badge"><%= @featured_posts_size %></span></h3>
+					<div id="featured-items">
+						<% @featured_posts.in_groups_of(4, false).each do |group| %>
+							<% for p in group %>
+						    	<div class="col-xs-12 col-sm-3">
+						    		<%= render 'posts/post', post: p, cached: true%>
+						    	</div>
+						    <% end %>
+						    <div class="col-xs-12"></div>
+					   	<% end %>
+					</div>
+				</div>
+				<div class="col-xs-12 text-center"><hr class="primary"></div>
+			<% end %>
+			<% if @posts.present? %>
+			    <% @posts.in_groups_of(4, false).each do |group| %>
+			    	<% for p in group %>
+			    		<div class="col-xs-12 col-sm-3">
+			    			<%= render 'posts/post', post: p, cached: true%>
+			    		</div>
+			    	<% end %>
+			    	<div class="col-xs-12"></div>
+			   	<% end %>
+			<% else %>
+				<div class="col-xs-12">
+					<p class="text-center"><i class="fa fa-3x fa-meh-o" aria-hidden="true"></i></p>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-xs-12">
+			<div class="text-center"><%= will_paginate @posts %></div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#posts').animateCss('fadeIn');
+</script>	
+<% if cookies[:sell_for_you_after_registered].present? %>
+	<div class="modal fade" role="dialog" id="sell_for_you_after_registered" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">	
+			  	<button type="button" id = "finished" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		        <h3 class="modal-title text-center" id="myModalLabel">Need help?</h3>	
+			  </div>
+			  <div class="modal-body">
+			  	<p>
+			  		Drop off... Get paid! We sell items on behalf of you! Please, send us an email
+			  		 us at 
+			  		 <strong>
+			  		 	<%= mail_to "contact@tradies.us",subject: "I have a question!" do %>
+							admin@tradies.us
+						<% end %>
+					</strong>
+			  		 for more details if you like us to sell your items!
+			  	</p>
+			  </div>
+			  <div class="modal-footer">
+		            <%= link_to "/no_thanks", class: "btn btn-secondary btn-md", id:"finished" do%>
+		            	Sounds good!
+		            <% end %>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<script>
+	$( document ).on('turbolinks:load', function() {
+		$('#sell_for_you_after_registered').modal('toggle');
+	});
+	</script>
+<% end %>
+
+
+

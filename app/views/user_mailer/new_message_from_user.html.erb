@@ -1,0 +1,17 @@
+<h1>Tradies</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>
+	<%= @sender.name%> has just sent you a message about your post on <strong><i>Tradies</i></strong>!
+</p>
+<p>
+	Click on the link below to keep communicating with <%@sender.name%>:
+</p>
+<p>
+	<%= link_to "Go to my Conversations", conversations_url %>
+</p>
+</br>
+</br>
+<p>Wish you the best,</p>
+<p><strong><i>Tradies</i></strong> Team</p>

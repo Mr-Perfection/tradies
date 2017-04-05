@@ -1,0 +1,21 @@
+<%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages',  object: f.object %>
+    
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: 'form_control', required: true %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: 'form_control', required: true %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form_control', required: true %>
+
+    <%= f.hidden_field :description %> 
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form_control', required: true %>
+    
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation, class: 'form_control', required: true %>
+
+    <%= f.submit yield(:buttom_text), class: "btn btn-default" %>
+<% end %>

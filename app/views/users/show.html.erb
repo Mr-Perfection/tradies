@@ -1,0 +1,71 @@
+<%provide(:title, @user.name) %>
+<div id="add-paddings-instead-of-header"></div>
+<div class="container container-medium">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading center">
+          <h3><%=@user.name %></h3>
+        </div>
+        <div class="panel-body">
+          <div style="padding-bottom: 2%;"><%=gravatar_for_responsive @user, class: "profile-pic"%></div>
+          <%= render 'users/user_info_table', user: @user%>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading center">
+          <h3>Reviews <span class="badge"><%= @reviews_size %></span></h3>
+        </div>
+        <div class="panel-body">
+          <% if @reviews.present? %>
+            <%= render @reviews, cached: true%>
+          <% else %>
+            <p class="text-center">No reviews yet <i class="fa fa-frown-o" aria-hidden="true"></i>.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <h3 class="profile-label">Available Items <span class="badge"><%= @available_user_posts_size %></span></h3>
+    </div>
+    <% if @available_user_posts.present? %>
+      <% @available_user_posts.each do |p| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= render 'posts/post', post: p, cached: true%>
+        </div>
+      <% end %>
+      <div class="col-xs-12">
+        <div class="text-center"><%= will_paginate @available_user_posts %></div>
+      </div>  
+    <% else %>
+      <div class="col-xs-12">
+        <p class="text-center">Items not available <i class="fa fa-frown-o" aria-hidden="true"></i>.</p>
+      </div>
+    <% end %>
+    <div class="col-xs-12">
+      <h3 class="profile-label">Sold Items <span class="badge"><%= @sold_user_posts_size %></span></h3>
+    </div>
+    <% if @sold_user_posts.present? %>
+      <% @sold_user_posts.each do |p| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= render 'posts/post', post: p, cached: true%>
+        </div>
+      <% end %>
+      <div class="col-xs-12">
+        <div class="text-center"><%= will_paginate @sold_user_posts %></div>
+      </div>  
+    <% else %>
+      <div class="col-xs-12">
+        <p class="text-center">Items not available <i class="fa fa-frown-o" aria-hidden="true"></i>.</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $( document ).on('turbolinks:load', function() {
+    $('.container').addClass('animated fadeIn');
+  });
+</script>

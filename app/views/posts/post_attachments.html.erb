@@ -1,0 +1,15 @@
+<div class="container container-medium">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="profile-label">Attached photos</h3>
+		</div>
+		<% if @post_attachments.present? %>	
+			<% @post_attachments.each do |attachment| %>
+				<div class="col-xs-12 col-sm-4">
+					<%= image_tag(attachment.avatar, class: "img-rounded img-responsive")%>
+					<%= link_to "edit", edit_post_attachment_path(attachment), class: "btn btn-default edit-post-attachment-button"%>	
+		    	</div>
+		   	<% end %>	
+		<% end %>
+	</div>	
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller_review: false
+  activation_digest: MyString
+  activated: false
+  satisfied: false
+  user_id: 1
+  post_id: 1
+
+two:
+  seller_review: false
+  activation_digest: MyString
+  activated: false
+  satisfied: false
+  user_id: 1
+  post_id: 1

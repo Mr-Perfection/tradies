@@ -1,0 +1,6 @@
+Hi <%= @reviewer.name %>,
+
+Please, leave a review for <%= @reviewee.name%> about <%= @post.subject%> that you recently purchased via WePay:
+
+<%#= edit_account_activation_url(@user.activation_token, email: @user.email, host: "localhost:3000") %>
+<%= edit_review_activation_url(@activation_token, review_id: @review.id )%>

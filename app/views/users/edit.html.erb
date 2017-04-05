@@ -1,0 +1,42 @@
+<% provide(:title, "Update profile") %>
+<div id="add-paddings-instead-of-header"></div>
+<div id= "user-update">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object%>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "Your full name",required: true%>
+
+        <%= hidden_field_tag :email, @user.email %>
+        <!-- <% f.label :email %> -->
+        <!-- <% f.email_field :email, class: 'form-control' %> -->
+        <%= f.label :description, "Description"%>
+        <%= f.text_area :description, class: 'form-control', placeholder: "Why are you on this website? Who are you? What are you looking for? Max: 140 characters"%>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control', required: true%>
+
+        <%= f.label :password_confirmation, "Password Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control', required: true%>
+
+        <%= f.submit "Save changes", class: "btn btn-default" %>
+      <% end %>
+
+      <div class="gravatar_edit">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target="_blank">change</a>
+      </div>
+    </div>
+  </div>
+  </br>
+  <div class="center"> <%= link_to "Delete My Account", @user, method: :delete,
+                                    data: { confirm: "Are you sure? We are very sad that you are leaving us." },
+                                    class: "btn btn-danger btn-medium" %>                                    
+  </div>
+</div>
+
+<script>
+  $('#user-update').addClass('animated fadeIn');
+</script>

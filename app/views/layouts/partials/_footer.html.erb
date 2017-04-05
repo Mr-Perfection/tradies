@@ -1,0 +1,13 @@
+<div class="footer">
+	<div class="text-center">
+	  <small> All copyrights © reserved at Tradies, Inc.</small>
+	  <p> <%= link_to help_path do %> Help<%end%> | <%= link_to "Terms", '/TermsOfUse' %> | <%= link_to "Privacy", '/PrivacyPolicy' %> | 
+		<span id="contact-us-footer">
+		<%= mail_to "contact@tradies.us",subject: "I have a question!" do %>
+			Contact Us
+		<% end %>
+		</span>
+	  </p>
+	  <small><i class="fa fa-envelope-o" aria-hidden="true"></i>: contact@tradies.us</small>
+	</div>
+</div>

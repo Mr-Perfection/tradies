@@ -1,0 +1,27 @@
+<% if !current_user?(@user)%>
+  <% if @post.sold == false %>
+    <% if @post.check_interested_user(current_user) %>
+      <div class="text-center"><%= link_to "Not interested", "/posts/not_interested/#{@post.id}", class: 'btn btn-default btn-large btn-medium btn-small'%></div>
+      <%= link_to "/messages/new/#{@post.id}", class: 'btn btn-default btn-medium' do %>
+        <i class="fa fa-comment" aria-hidden="true"></i> this Tradie
+      <% end %>
+      <% if ( @user.has_wepay_account? && @post.payment_method == "Both" || @user.has_wepay_account? && @post.payment_method == "Tradies Checkout")%>
+        <%= link_to "/posts/buy/#{@post.id}", class: 'btn btn-default btn-medium', id: 'buy-now-button', data: {confirm: "This action is irreversible. Did you meet the seller and decide to buy? Make sure you check the item's description and any specifications that match what this Tradie claims. We are NOT responsible for any final transaction that occured between you and this Tradie."} do%>
+          <i class="fa fa-check-square-o" aria-hidden="true"></i> Tradies Checkout
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="text-center"><%= link_to "I'm interested!", "/posts/interested/#{@post.id}", class: 'btn btn-default btn-large btn-medium btn-small'%></div>
+    <%end%>
+  <% else %>
+    <div class="text-center"><button type="button" class="btn btn-default btn-large btn-medium btn-small" disabled="disabled">You bought it!</button> 
+    <%= link_to "See Who?", user_path(@post.user_id), class: 'btn btn-default btn-large btn-medium btn-small'%>
+    </div>
+  <% end %>
+<% else %>
+  <% if @post.sold == false %>
+    <%= link_to "/posts/mark_as_sold/#{@post.id}", class: 'btn btn-default btn-medium', id: 'buy-now-button', data: {confirm: "Are you sure? Did you meet the buyer and decide to sell? You won't be able to leave a review with cash payment."} do%>
+      <i class="fa fa-check-circle-o" aria-hidden="true"></i> Mark as Sold
+    <% end %>
+  <%end%>
+<% end %>

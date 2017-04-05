@@ -1,0 +1,37 @@
+<% provide(:title, "User posts") %>
+<% provide(:buttom_text, 'Create post')%>
+<div class="container container-medium">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <h3 class="profile-label">Interested Items <span class="badge" id="posts-badge"><%= @interested_user_posts_size %></span></h3>
+      <% if @interested_user_posts.any? %>
+        <%= render 'shared/user_posts', posts: @interested_user_posts %>
+      <% else %>
+        <p class="text-center">No items you are interested in <i class="fa fa-frown-o" aria-hidden="true"></i>?</p>
+        <p class="text-center"><b><i><%= link_to "click here to start buying", root_path %></i></b></p>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <h3 class="profile-label">My Items <span class="badge" id="posts-badge"><%= @user_posts_size %></span></h3>
+      <% if @user_posts.any? %>
+        <%= render 'shared/user_posts', posts: @user_posts %>
+      <% else %>
+        <p class="text-center">No posts yet <i class="fa fa-frown-o" aria-hidden="true"></i>? Create your WePay account and start posting!</p>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <h3 class="profile-label">Purchased Items <span class="badge" id="posts-badge"><%= @bought_user_posts_size %></span></h3>
+      <% if @bought_user_posts.any? %>
+        <%= render 'shared/user_posts', posts: @bought_user_posts %>      
+      <% else %>
+        <p class="text-center">No purchased items yet <i class="fa fa-frown-o" aria-hidden="true"></i>?</p>
+        <p class="text-center"><b><i><%= link_to "click here to start buying", root_path %></i></b></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+  $( document ).on('turbolinks:load', function() {
+    $('.container').addClass('animated fadeIn');
+  });
+</script>

@@ -1,0 +1,28 @@
+<li class="list-group-item clearfix">
+  
+  <p><strong><%= link_to conversation.subject, conversation_path(conversation) %></strong></p>
+  <div class="btn-group-vertical pull-right">
+    <%= link_to 'Reply', conversation_path(conversation),
+                    class: 'btn btn-xs btn-default'%>
+    <% if conversation.is_trashed?(current_user) %>
+      <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-default', method: :post %>
+    <% else %>
+      <%= link_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
+                  data: {confirm: 'Are you sure?'} %>
+      
+      <%# if conversation.is_unread?(current_user) %>
+        <%#= link_to 'Mark as read', mark_as_read_conversation_path(conversation),
+                    class: 'btn btn-xs btn-default', method: :post %>
+      <%# end %>
+    <% end %>
+  </div>
+  <div id="show_content"><%= render 'conversations/participants', conversation: conversation %></div>
+  <p class="message-body"><%= truncate(conversation.last_message.body, length: 90) %></p>
+  <div class='meta'>
+    <span class="timestamp">
+      <hr>
+      <small><div class="message-timestamp">sent by <%= link_to conversation.last_message.sender.name, user_path(conversation.last_message.sender)%> <%= time_ago_or_at(conversation.last_message.created_at) %></div></small> 
+    </span>
+  </div> 
+</li>
+

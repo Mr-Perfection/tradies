@@ -1,0 +1,104 @@
+<% provide(:title, "view post") %>
+<% provide(:buttom_text, 'Edit post')%>
+<%#provide(:page_header, "#{@post.subject}") %>
+<div id="add-paddings-instead-of-header"></div>
+<div id="show-post">
+  <div class="container">
+    <div class="rows">
+      <div class="col-xs-12">
+        <% if logged_in? %>
+          <%= render 'posts/options', post: @post%>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="post_panel">
+          <% if @post_images.present? %>
+            <%= carousel_for(@post_images) %>
+          <% else %>
+            <p class="text-center">No images! Please, contact Tradies Team.</p>
+          <%end%>
+          <div class="panel panel-default" id="panel-post-info">
+            <div class="panel-body text-center">
+              <h3><%= @post.subject%></h3>
+              <h2><b>$<%=@post.price%></b></h2>
+              <p><strong> 
+                <% @categories.each do |category|%>
+                  <%= link_to "#{category}",search_path(query: category)%>
+                <%end%>
+              </strong></p>
+              <div class="post-buttons">
+                <% if logged_in? %>
+                  <%= render 'posts/show_buttons'%> 
+                <% else %>
+                  <%= link_to "Create an account on Tradies to contact the seller.", login_path%>
+                <%end%>
+              </div>
+              <span id="show_content_on_mobile">
+                <hr>
+                <h3><strong><%= @post.street_address if @post.street_address.present?%> <%= @post.city%>, <%= @post.state%> <%= @post.zip if @post.zip.present?%></strong></h3>
+                <div class="map-responsive" data-toggle="maps-popover" data-trigger="focus"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=@post.latitude%>,<%=@post.longitude%>&markers=<%=@post.latitude%>,<%=@post.longitude%>&zoom=13&size=300x300" class:"img-responsive img-rounded" alt="<%=@post.street_address%> on the map"></img></div>
+              </span>
+                <div id="show_content_on_mobile">
+                  <hr>
+                  <a href="<%= user_path(@user)%>">
+                    <%= render 'shared/user_profile'%> 
+                  </a>
+                </div>
+                <hr>
+                <% if logged_in? %>
+                  <% if  @post.phone_number.present? || @post.email_address.present? %>
+                    <h3>Contact</h3>
+                    <p>
+                      <% if @post.phone_number.present? %>
+                        <i class="fa fa-phone" aria-hidden="true"></i> <%= number_to_phone(@post.phone_number)%>
+                      <% end %>
+                      <% if @post.email_address.present? %>
+                         <i class="fa fa-envelope-o" aria-hidden="true"></i> <%= @post.email_address%>
+                      <%end%>
+                    </p>
+                  <% end %>
+                <% end %>
+                <h3>Condition</h3>
+                <p><%= @post.condition%></p>
+                <h3>Payment Method</h3>
+                <div id="show_content_on_mobile">
+                  <p>
+                    <%= render 'posts/payment_method', post: @post%>
+                  </p>
+                </div>
+                <div id="show_content">
+                  <p>
+                    <%= render 'posts/show_payment_method', post: @post%>
+                  </p>
+                </div>  
+                <h3>Description</h3>
+                <%= simple_format(@post.content, class: "wrap") %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="panel panel-default post_panel" id="show_content">
+          <div class="panel-heading panel-heading-custom text-center"><h3><strong><span class="glyphicon glyphicon-map-marker"></span> Location</strong></h3></div>
+          <div class="panel-content text-center post_content">
+            <h3><strong><%= @post.street_address if @post.street_address.present?%> <%= @post.city%>, <%= @post.state%> <%= @post.zip if @post.zip.present?%></strong></h3>
+            <div class="map-responsive" data-toggle="maps-popover" data-trigger="focus"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=@post.latitude%>,<%=@post.longitude%>&markers=<%=@post.latitude%>,<%=@post.longitude%>&zoom=13&size=300x300" class: "img-responsive img-rounded" alt="<%=@post.street_address%> on the map"></img></div>
+            <%= render 'posts/maps'%>
+          </div> 
+        </div>
+        <div class="panel panel-default post_panel" id="show_content">
+          <div class="panel-heading panel-heading-custom text-center"><h3><strong><span class="glyphicon glyphicon-briefcase"></span> Tradie</strong></h3></div>
+          <div class="panel-content">
+            <div class="row">
+              <%= render 'shared/user_profile'%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('.container').addClass('animated fadeIn');
+</script>

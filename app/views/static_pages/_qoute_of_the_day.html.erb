@@ -1,0 +1,32 @@
+<div class="home">
+    <div class="qoute-of-the-day">
+    	<button type="button" class="btn btn-default btn-medium" id= "qoute" data-toggle="modal" data-target="#qoute-of-day">
+			Quote of the Day
+		</button>
+	</div>
+	<script>
+	  $('.qoute-of-the-day').animateCss('bounceInDown');
+	</script>	
+	<div class="modal fade" id="qoute-of-day" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" id = "finished" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h3 class="modal-title text-center" id="myModalLabel">Quote of the Day</h3>
+	      </div>
+	      <div class="modal-body">
+	      	<p>FAIL means First Attempt in Learning. NO means Next Opportunity. END means Effort Never Dies. So be positive!</p>
+	      </div>
+
+	      <div class="modal-footer">
+			<button type="button" class="btn btn-secondary btn-md" id = "finished"  data-dismiss="modal">
+		  		Thank you!
+			</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+<!-- end quote of the day -->

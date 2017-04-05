@@ -1,0 +1,16 @@
+/* line 2, /Users/StephenLee/sites/tradies/app/assets/stylesheets/conversations.scss */
+.message-timestamp {
+  color: #808080;
+  font-style: italic;
+}
+
+/* line 6, /Users/StephenLee/sites/tradies/app/assets/stylesheets/conversations.scss */
+.empty-trash {
+  padding-top: 2%;
+  margin-bottom: 2%;
+}
+
+/* line 10, /Users/StephenLee/sites/tradies/app/assets/stylesheets/conversations.scss */
+.message-body {
+  word-wrap: break-word;
+}

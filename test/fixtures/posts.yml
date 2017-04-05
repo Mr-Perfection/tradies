@@ -1,0 +1,54 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+orange:
+
+  subject: "hello world"
+  price: 2
+  content: "I just ate an orange!"
+  created_at: <%= 10.minutes.ago %>
+  user: michael
+
+tau_manifesto:
+  subject: "hello world"
+  price: 2
+  content: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at: <%= 3.years.ago %>
+  user: michael
+
+cat_video:
+  subject: "hello world"
+  price: 2
+  content: "Sad cats are sad: http://youtu.be/PKffm2uI4dk"
+  created_at: <%= 2.hours.ago %>
+  user: michael
+
+most_recent:
+  subject: "hello world"
+  price: 2
+  content: "Writing a short test"
+  created_at: <%= Time.zone.now %>
+  user: michael
+
+ants:
+  subject: Faker::Commerce.product_name
+  content: "Oh, is that what you want? Because that's how you get ants!"
+  street_address: Faker::Address.street_address 
+  city: "San Fransisco"
+  state: "California"
+  zip: Faker::Address.zip
+  price: Faker::Number.decimal(2)
+  created_at: <%= 42.days.ago %>
+  user: archer
+
+<% 30.times do |n| %>
+post_<%= n %>:
+  subject: Faker::Commerce.product_name
+  content: Faker::Lorem.sentence(5)
+  street_address: Faker::Address.street_address 
+  city: "San Fransisco"
+  state: "California"
+  zip: Faker::Address.zip
+  price: Faker::Number.decimal(2)
+  created_at: <%= 42.days.ago %>
+  user: michael
+<% end %>

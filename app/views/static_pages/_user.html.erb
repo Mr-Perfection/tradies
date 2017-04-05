@@ -1,0 +1,12 @@
+<% if !@current_location.present? %>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<%= render 'static_pages/locations'%>
+    	</div>
+	</div>
+<% else %>
+	<!-- categories -->
+	<div class="row">
+		<%= render 'static_pages/categories'%>	
+	</div>
+<% end %>

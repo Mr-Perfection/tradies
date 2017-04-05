@@ -1,0 +1,15 @@
+<h1>Tradies</h1>
+
+<p>Hi Tradie <%= @reviewer.name %>,</p>
+
+<p>
+Please, leave a review for <%= @reviewee.name%> about <%= @post.subject%> that you recently purchased via WePay:
+</p>
+<p>
+	<%= link_to "Click here to leave a review", edit_review_activation_url(@activation_token,
+                                                    review_id: @review.id ) %>
+</p>
+</br>
+</br>
+<p>See you later,</p>
+<p><strong><i>Tradies</i></strong> Team</p>

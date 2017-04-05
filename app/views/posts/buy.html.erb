@@ -1,0 +1,28 @@
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><span class="glyphicon glyphicon-refresh"></span></strong> Refresh your page if you don't see the credit card form from WePay.
+</div>
+
+<div class="col-lg-10 col-md-10 col-sm-10 col-md-offset-1">
+	<ul class="list-group">
+	  <li class="list-group-item"><h3>Buy <%= @post.subject %> from <%= @user.name %> for <%= number_to_currency(@post.price, :unit => "$")%></h3></li>
+	  <li class="list-group-item"><div id="wepay_checkout"></div></li>
+	  <li class="list-group-item"><p><%= link_to "back to the " + @user.name + "'s " + @post.subject + " post", @post %></p></li>
+	</ul>
+</div>
+
+
+<script type="text/javascript" src="https://www.wepay.com/min/js/iframe.wepay.js">
+</script>
+
+<script type="text/javascript">
+	var checkout_func;
+	checkout_func = function() {
+		WePay.iframe_checkout("wepay_checkout", "<%=@checkout['hosted_checkout']['checkout_uri']%>");
+	};
+ //    document.addEventListener("turbolinks:load", function() {
+ //  		my_func();
+	// });
+	checkout_func();
+	// $(window).on('turbolinks:load', checkout_func);
+</script>

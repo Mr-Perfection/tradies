@@ -1,0 +1,60 @@
+<div class="navbar-header">
+  <div class="col-xs-2">
+    <%= link_to "Tradies", root_path, class: "navbar-brand-mobile", id: "logo"  %> 
+  </div>
+  <div class="col-xs-8">
+  </div>
+  <div class="col-xs-2">
+    <% if logged_in? %>
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-align-justify" aria-hidden="true"></i>
+          <span class="notifications-count">
+            <span class="badge"><%=count_unread_messages%></span>
+          </span>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <% if current_user.admin?%>
+            <li><%= link_to "Users", users_path %></li>
+          <% end %>
+          <% if current_user.has_valid_wepay_access_token? && current_user.has_wepay_account?%>
+            <li><a href="#" data-toggle="modal" data-target="#post-form"><span class="glyphicon glyphicon-edit"></span> Post</a></li>
+            <%= render 'shared/post_form_modal', post: current_user.posts.includes(:post_attachments).build %>
+          <% end %>
+          <li><a href="/conversations"><span class="glyphicon glyphicon-comment"></span> Conversations <span class="notifications-count"><span class="badge"><%=count_unread_messages%></span></span></a></li>
+          <li><%= link_to "/users/posts/#{current_user.id}" do %><span class="glyphicon glyphicon-stats"></span> Activities<%end%></li>
+          <li><%= link_to current_user do %><span class="glyphicon glyphicon-user"></span> Profile<%end%></li>
+          <li><%= link_to edit_user_path(current_user) do %><span class="glyphicon glyphicon-cog"></span> Settings<%end%></li>
+          <li class="divider"></li>
+          <li><%= link_to logout_path, method: "delete" do %><span class="glyphicon glyphicon-off"></span> Log out<%end%></li>
+        </ul>
+      </div>
+    <% else %>
+      <p class="pull-right"><%= link_to login_path do %><span class="glyphicon glyphicon-off"></span><%end%></p>
+    <% end %>
+  </div>
+  <div class="col-xs-12">
+    <%= form_for home_path, class: 'home', role: 'search', method: :get do |f| %>
+      <div class="form-group" style="display:inline;">
+        <div class="input-group input-group-md">
+          <%= text_field_tag :q, params[:q], placeholder: "Type anything that you want to purchase...",class: 'form-control hideOverflow', type: "search" %>
+          <%= select_tag "category", options_from_collection_for_select(Category.all, "title", "title"),include_blank: true, class: 'form-control hideOverflow', type: "search" %>
+          <%if logged_in? %>
+            <%= select_tag "location", options_for_select(['Sacramento, CA', 'San Francisco, CA', 'Santa Clara, CA', 'San Jose, CA', 'Palo Alto, CA', 'Berkeley, CA', 'Fremont, CA', 'Oakland, CA'], current_user.current_location),class: 'form-control hideOverflow', required: true, type: "search" %>
+          <% else %>
+            <%= select_tag "location", options_for_select(['Sacramento, CA', 'San Francisco, CA', 'Santa Clara, CA', 'San Jose, CA', 'Palo Alto, CA', 'Berkeley, CA', 'Fremont, CA', 'Oakland, CA']),class: 'form-control hideOverflow', required: true, type: "search" %>
+          <% end %>
+          
+            <span class="input-group-addon"><%= submit_tag "Search", class: "btn-transparent"%></span>
+            <!-- <i class="fa fa-search"></i> -->
+          <!-- <span class="input-group-addon" data-toggle="popover" title="How to search?" data-content="Type something in the input field and press Enter." data-placement="bottom"><i class="fa fa-search"></i></span> -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!-- <div class="col-xs-2"> -->
+    
+  <!-- </div> -->
+</div>
+<!-- /.navbar-collapse -->

@@ -1,0 +1,50 @@
+<% provide(:title, 'Upgrades') %>
+<% page_header "Upgrades" %>
+<div class="container container-large">
+<div class="row">
+	<div class="col-lg-10 col-md-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
+		<div class="panel panel-default">
+        	<div class="panel-heading"><h3 class="text-center">Simple Boost</h3></div>
+        	<div class="panel-content text-center">
+        		<h4>You want a bit more... posts?</h4>
+                        <h4>You can create 4 more posts for ONLY $0.99!</h4>
+        		<p><i>We do not offer refunds for any boosts, so make sure you proceed with caution!</i></p>
+        		<p>
+        			<%= link_to "Upgrade Me", '/upgrades/buy/1', class: 'btn btn-default btn-medium' %>
+        		</p>
+        		
+        	</div>
+		</div>
+	</div>
+	<div class="col-lg-10 col-md-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
+		<div class="panel panel-default">
+        	<div class="panel-heading"><h3 class="text-center">Super Boost</h3></div>
+        	<div class="panel-content text-center">
+        		<h4>You like <strong>Tradies</strong> and want to post more?</h4>
+                        <h4>You can create 9 more posts for just $1.99!</h4>
+        		<p><i>We do not offer refunds for any boosts, so make sure you proceed with caution!</i></p>
+        		<p>
+        			<%= link_to "Upgrade Me", '/upgrades/buy/2', class: 'btn btn-default btn-medium' %>
+        		</p>
+        	</div>
+		</div>
+	</div>
+	<div class="col-lg-10 col-md-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
+		<div class="panel panel-default">
+        	<div class="panel-heading"><h3 class="text-center">Ultra Boost</h3></div>
+        	<div class="panel-content text-center">
+        		<h4> Ok... You love using <strong>Tradies</strong>?</h4>
+                        <h4>You can create 20 more posts for $2.99!</h4>
+        		<p><i>We do not offer refunds for any boosts, so make sure you proceed with caution!</i></p>
+        		<p>
+        			<%= link_to "Upgrade Me", '/upgrades/buy/3', class: 'btn btn-default btn-medium' %>
+        		</p>
+        		
+        	</div>
+		</div>
+	</div>
+<script>
+  $('.panel').addClass('animated fadeIn');
+</script>
+</div>	
+</div>

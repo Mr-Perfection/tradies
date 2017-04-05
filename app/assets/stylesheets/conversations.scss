@@ -1,0 +1,13 @@
+$gray-light: #808080;
+.message-timestamp {
+	color: $gray-light;
+	font-style: italic;
+}
+.empty-trash {
+	padding-top: 2%;
+	margin-bottom: 2%;
+}
+.message-body {
+	word-wrap: break-word;
+	
+}

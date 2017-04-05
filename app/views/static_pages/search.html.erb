@@ -1,0 +1,16 @@
+<%= form_for home_path, method: :get do |f| %>
+	  <p>
+	    <%= f.label "Search for" %>
+	    <%= text_field_tag :query, params[:query] %>
+	    <%= submit_tag "Go", name: nil %>
+	  </p>
+	<% end %>
+	<div class="col-md-8">
+	    <% if @posts.any? %>
+	    <h2>Search: </h2>
+	      <ol class="posts">
+	      	<h3>Posts (<%= @posts.count %>)</h3>
+	        <%= render @posts %>
+	      </ol>
+	    <% end %>
+	</div>	

@@ -1,0 +1,48 @@
+<div class="buttons">
+<% if logged_in?%>
+  <% if post.user_id != current_user.id%>
+    <% if !post.check_interested_user(current_user)%>
+      <div class="text-center"><%= link_to "I'm interested!", "/posts/interested/#{post.id}", class: 'btn btn-default btn-large btn-medium btn-small'%></div>
+    <% elsif post.sold == true && post.sold_user_id == current_user.id %>  
+      <div class="text-center"><button type="button" class="btn btn-default btn-large btn-medium btn-small" disabled="disabled">You bought it!</button> 
+      <%= link_to "See Who?", user_path(post.user_id), class: 'btn btn-primary btn-large btn-medium btn-small'%>
+      </div>
+    <% elsif post.sold == true%>
+      <div class="text-center">
+        <button type="button" class="btn btn-default btn-large btn-medium btn-small" disabled="disabled">Sold!</button>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <%= link_to "/messages/new/#{post.id}", class: 'btn btn-default btn-large btn-medium btn-small' do %>
+          <i class="fa fa-comment" aria-hidden="true"></i> this Tradie
+        <%end%>
+        <%= link_to "Not interested", "/posts/not_interested/#{post.id}", class: 'btn btn-danger btn-large btn-medium btn-small', data: {confirm: "Are you sure?"} %>
+      </div>
+    <% end %>
+  <% else%>
+    <% if post.sold == true%>  
+      <div class="text-center">
+        <button type="button" class="btn btn-default btn-large btn-medium btn-small" disabled="disabled">Sold!</button>
+        <%= link_to "See Who?", user_path(post.sold_user_id), class: 'btn btn-primary btn-large btn-medium btn-small'%>
+      </div>
+    <% elsif post.interested_users_present%>
+      <div class="text-center">
+        <%= link_to "#", class: 'btn btn-default btn-large btn-medium btn-small' do%>
+          <span class="glyphicon glyphicon-user"></span> is interested!
+        <%end%>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <button type="button" class="btn btn-default btn-large btn-medium btn-small">Still waiting!</button>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div class="text-center">
+    <%= link_to login_path, class: "btn btn-default btn-large btn-medium btn-small" do%>
+      <i class="fa fa-lock" aria-hidden="true"></i> 
+      Tradies Only
+    <% end %>
+  </div>
+<% end %>
+</div>

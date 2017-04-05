@@ -1,0 +1,9 @@
+<%= link_to gravatar_for(current_user, {size:70}), current_user,  class: "img-responsive"%>
+<span class="info-content">
+	<h4><%= current_user.name %></h4>
+	<p><%= link_to "view my profile", current_user %></p>
+</span>
+<% if (current_user.has_valid_wepay_access_token? && current_user.has_wepay_account?) %> 
+  <a class="pull-right btn btn-default" id= "show-more-post-show" href="#">Show more</a>
+  <a class="pull-right btn btn-danger" id= "show-more-post-hide" href="#">Show less</a>
+<% end %>

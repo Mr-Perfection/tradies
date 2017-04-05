@@ -1,0 +1,72 @@
+
+<div class="categories">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+		<div class="panel panel-default category-panel">
+			<div class="panel-heading">
+				<a class="show-more-info-show pull-right btn btn-default" href="#">Show Categories</a>
+				<a class="show-more-info-hide pull-right btn btn-danger" href="#">Hide Categories</a>
+				<h3 class="center">Categories <a><i class="fa fa-question-circle" aria-hidden="true" data-toggle="popover" title="Categories made easy!" data-content="Click or tap onto any of the categories that your interested items belong to." data-placement="right"></i></a></h3>
+			</div>
+
+			
+				<div class="panel-content text-center">
+					<div class="show-more-info">
+					  <ul class="nav nav-pills" role="tablist">
+					  	<li role="presentation" class="active"><a href="/search/Appliances">Appliances<span class="badge"><%= @categories["Appliances"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Auto">Auto <span class="badge"><%= @categories["Auto"]%></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Books">Books <span class="badge"><%= @categories["Books"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Bikes">Bikes <span class="badge"><%= @categories["Bikes"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Beauty">Beauty <span class="badge"><%= @categories["Beauty"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Boats">Boats <span class="badge"><%= @categories["Boats"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Beverages">Beverages <span class="badge"><%= @categories["Beverages"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Electronics">Electronics <span class="badge"><%= @categories["Electronics"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Events">Events <span class="badge"><%= @categories["Events"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Food">Food <span class="badge"><%= @categories["Food"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Household">Household <span class="badge"><%= @categories["Household"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Housing">Housing <span class="badge"><%= @categories["Housing"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Hardware">Hardware <span class="badge"><%= @categories["Hardware"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Health">Health <span class="badge"><%= @categories["Health"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Kids">Kids <span class="badge"><%= @categories["Kids"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Tickets">Tickets <span class="badge"><%= @categories["Tickets"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Toys">Toys <span class="badge"><%= @Toys %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Tools">Tools <span class="badge"><%= @categories["Tools"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Sporting">Sporting <span class="badge"><%= @categories["Sporting"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Software">Software <span class="badge"><%= @categories["Software"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Service">Service <span class="badge"><%= @categories["Service"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Pets">Pets <span class="badge"><%= @categories["Pets"] %></span></a></li>
+						<li role="presentation" class="active"><a href="/search/Misc.">Misc. <span class="badge"><%= @categories["Miscs."] %></span></a></li>
+					 </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="posts">
+	<div class="col-xs-12"><h3 class="text-center"><strong>Posts <span class="badge"><%= @posts_count %></span></strong></h3></div>
+	<div id="show_content">
+		<% if @posts.present? %>
+		    <% @posts.each do |p| %>
+		    	<%#= @which = cycle('odd', 'even')%>
+		    	<!-- <div class="<%= cycle('odd', 'even') -%>"> -->
+		    	<div class="col-xs-6">
+		    		<%= render 'posts/post', post: p%>
+		    	</div>
+		       <!-- </div> -->
+		   	<% end %>
+		<% end %>
+	</div>
+	<div id="show_content_on_mobile">
+		<div class="col-xs-12">
+		    <% if @posts.present? %>
+		        <%= render @posts, cached: true%>
+		      <%= will_paginate @posts %>
+		    <% else %>
+				 <p class="text-center">Items not found...:(</p>
+		    <%end%>
+	    </div>
+	</div>
+</div>
+<script>
+	$('.categories').animateCss('bounceInDown');
+	$('#posts').animateCss('fadeIn');
+</script>	

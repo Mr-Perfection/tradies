@@ -1,0 +1,37 @@
+<% provide(:title, 'Conversations') %>
+<div id="add-paddings-instead-of-header"></div>
+<div class="container container-large">
+<div class="row">
+  <div class="col-sm-3">
+    <div class="mailbox">
+      <ul class="nav nav-pills nav-stacked">
+        <%= mailbox_section 'inbox', @box, {which: 'glyphicon glyphicon-inbox pull-right'}%>
+        <%= mailbox_section 'sent', @box, {which: 'glyphicon glyphicon-send pull-right'}%>
+        <%= mailbox_section 'trash', @box, {which: 'glyphicon glyphicon-trash pull-right'} %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 col-lg-8" id="conversations-index">
+    <div class="empty-trash">
+      <% if @conversations.present? && @box == 'trash' %>
+        <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-lg btn-danger', method: :delete,
+                       data: {confirm: 'Are you sure?'} %></p>
+      <% end %>
+    </span>
+    <% if @conversations.present? %>
+      <ul class="list-group">
+        <%= render partial: 'conversations/conversation', collection: @conversations %>
+      </ul>
+      <div class="text-center"><%= will_paginate @conversations%></div>
+    <% else %>
+      <p>No messages yet <i class="fa fa-frown-o" aria-hidden="true"></i>...</p>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $( document ).on('turbolinks:load', function() {
+    $('#conversations-index').addClass('animated fadeIn');
+  });
+</script>

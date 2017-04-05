@@ -1,0 +1,70 @@
+<% provide(:title, 'Help') %>
+<div class="container help-container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h2 class="text-center"><b>FAQ</b></h2></div>
+        <div class="row">
+            </br>
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>Does <strong>Tradies</strong> offer shipping?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4>Unfortunately, not now. It is in the works to be offered later on.</h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>Who can sell on <strong><i>Tradies</i></strong>?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4><strong><i>Tradies</i></strong> community is open to honest and courteous individuals selling <strong>LEGAL</strong> items or services. Any scammers are banned from our community!</h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>What is WePay and how does it work?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4>Please, refer back to <%= link_to "WePay FAQ", "https://support.wepay.com/hc/en-us/articles/203609503-WePay-FAQ"%>.</h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>How much does Tradies charge?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4><a href="#" data-toggle="modal" data-target="#app-fee-modal">Click here to check out the rates.</a></h4>
+                        <%= render 'shared/tradies_app_fee'%>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>What are the available cities and states to use Tradies?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4>We are currently available in <i>Berkeley CA, Fremont CA, Heyward CA, Oakland CA, Mountain View CA, Milpitas CA, Palo Alto CA, San Francisco CA, Sacramento CA, Santa Clara CA, San Jose CA, San Mateo CA, and Union City CA</i>. Don't worry! We will expand to other areas soon!</h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>Can I get the refund from the seller?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4>Our goal is to provide the platform to allow users to trade with each other with trust and respect. We give you full control over all the transactions you make with sellers. Therefore, we are not responsible for any transactions between sellers and buyers during the meetings. However, if you accidentally pay the seller via WePay checkout, you can ask the seller directly. We are planning to implement new buyer protection features in the future.</h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>How to leave a review?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4>You can only leave a review if you pay the item with WePay checkout during the trade.</h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>Can I pay in cash?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4>Yes, you are allowed to pay in cash for now, but the buyer cannot leave his/her own ratings and feedback after the trade. If you like using our platform, please use our checkout method.</h4>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center"><h4>Where can I contact Tradies Team?</h4></div>
+                    <div class="panel-content help-content">
+                        <h4>Please, contact us via email, contact[at]tradies[dot]us if you find any problems. Heap praise if you like :)</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  $('.panel').addClass('animated fadeIn');
+</script>

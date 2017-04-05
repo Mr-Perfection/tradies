@@ -1,0 +1,77 @@
+<% post_attachments = post.post_attachments.build%>
+<% categorizations = post.categorizations.build%>
+<%= form_for(post, html: { multipart: true }, method: :put) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+        <%= f.label "Subject" %>
+        <%= f.text_field :subject, placeholder: "item name", class: 'form_control', required: true%>
+        <%= f.label "Price" %>
+        <%= f.number_field :price, placeholder: "item price (in dollar $)", min: 0, step: 0.01,  class: 'form_control', required: true %>
+        <%= f.label :category_ids, "Category" %>
+        <%= f.select :category_ids, Category.all.collect {|x| [x.title, x.id]}, {}, multiple: true, required: true, include_blank: true%>
+        <%= f.label "Meeting Location" %>
+        <%= f.text_field :street_address, placeholder: "Street address (where to meet up?)", class: 'form_control', required: true%>
+        <%= f.select :city, ['Sacramento', 'San Francisco', 'Santa Clara', 'San Jose', 'Palo Alto', 'Berkeley', 'Fremont', 'Oakland'], include_blank: true ,required: true%>
+        <%= f.select :state, ['CA'], required: true%>
+        <%= f.text_field :zip, placeholder: "Zip code",  class: 'form_control', required: true%>
+        <%= f.label "Condition" %>
+        <%= f.select :condition, ['Used', 'Refurbished', 'New'], include_blank: true, required: true %>
+        <%= f.label "Payment Method" %>
+        <%= f.select :payment_method, ['Tradies Checkout', 'Cash', 'Both'], include_blank: true, required: true %>
+        <%= f.label "Phone Number (Optional)" %>
+        <%= f.text_field :phone_number, placeholder: "xxx-xxx-xxxx (follow this format)", class: 'form_control'%>
+        <%= f.label "Email Address (Optional)" %>
+        <%= f.text_field :email_address, placeholder: "your email address (optional)", class: 'form_control'%>
+        <%= f.label "Content" %>
+        <%= f.text_area :content, maxlength: 500,placeholder: "compose new post (include your item specifications, condition, etc... Max: 500 characters Min: 25 characters. ",  class: 'form_control', required: true, size: "15x15"%>
+
+    </div>
+    <% if !post.post_attachments.exists? %>
+        <%= f.fields_for :post_attachments, required: true do |p| %>
+            <div class="field" id="post-attachment-field">
+              <%= p.label "Images (maximum: 8 images)" %><br>
+              <%= p.file_field :avatar, :multiple => true, accept: "image/jpeg, image/jpg, image/gif, image/png", name: "post_attachments[avatar][]",  class: 'form_control' , required: true %>
+            </div>
+        <% end %>
+    <% end %>
+    <span class="picture">
+        <%#= f.label :pictures %>
+        <%#= f.file_field :pictures, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+    </span>
+    <%= f.submit button_text, class: "btn btn-default", data: {confirm: "Are you sure? Please review Traides App Fee."}%>
+    
+<% end %>
+
+<script>
+    $( document ).on('turbolinks:load', function() {
+        $('select#post_category_ids').select2({ 
+            width: '100%', 
+            dropdownAutoWidth : true, 
+            // placeholder: "choose categories (up to 3 categories)",
+            maximumSelectionLength: 3
+        }); 
+        $('select#post_city').select2({ 
+            width: '100%', 
+            dropdownAutoWidth : true, 
+            // placeholder: "choose a city",
+            allowClear: true
+        });
+        $('select#post_state').select2({ 
+            width: '100%', 
+            dropdownAutoWidth : true, 
+            minimumResultsForSearch: Infinity
+        });
+        $('select#post_condition').select2({ 
+            width: '100%', 
+            dropdownAutoWidth : true, 
+            allowClear: true,
+            minimumResultsForSearch: Infinity
+        });
+        $('select#post_payment_method').select2({ 
+            width: '100%', 
+            dropdownAutoWidth : true, 
+            allowClear: true,
+            minimumResultsForSearch: Infinity
+        });
+    });
+</script>

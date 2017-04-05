@@ -1,0 +1,71 @@
+/* line 6, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.post-content {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* line 14, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.post-info-top {
+  padding-top: 10px;
+}
+
+/* line 17, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.post-info {
+  padding-top: 1%;
+}
+
+/* line 20, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.page-header .small {
+  color: #D3D3D3;
+}
+
+/* line 23, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.location {
+  margin-top: 5em;
+}
+
+/* line 26, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+a:hover,
+a:focus {
+  color: #eb3812;
+}
+
+/* line 30, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.post-attachments {
+  padding-top: 100px;
+}
+
+/* line 35, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.left-padding {
+  padding-left: 2%;
+}
+/* line 37, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.left-padding h3 {
+  margin-left: 50px;
+}
+
+/* line 42, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.rating {
+  position: absolute;
+  left: 500px;
+}
+
+/* line 46, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.member-since {
+  position: absolute;
+  width: 200px;
+  left: 500px;
+}
+
+/* line 51, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.gmaps-static {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* line 55, /Users/StephenLee/sites/tradies/app/assets/stylesheets/posts.scss */
+.content {
+  position: absolute;
+  left: 800px;
+  width: 300px;
+}

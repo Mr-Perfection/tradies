@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= favicon_link_tag %>
+    <title><%= full_title(yield(:title)) %></title>
+     <!-- let google to index your page -->
+    <link rel="canonical" href="<%= url_for(format: :html, only_path: false) %>" >
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/google_analytics'%>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <%= render 'layouts/google_analytics_pageview' %>
+  
+  <body>
+   <% if !logged_in? %> 
+    <div id="loading">
+      <div id="loading-center">
+        <div id="loading-center-absolute">
+          <div id="loading-object"><%=image_tag("loading-icon.gif")%></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var ready;
+      ready = function() {
+        $("#loading").fadeOut(1000);
+      };
+      $(window).on('turbolinks:load', ready);
+    </script>
+   <% end %>
+    <%= render 'layouts/partials/header' %>
+
+    <!-- <div class="container container-large"> -->
+    <div id="show_content"><div class="header-web"></div></div>
+    <div id="show_content_on_mobile"><div class="header-mobile"></div></div>
+      <div class="page-header">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %> alert-dismissible">
+            <strong><%= message_type%>!</strong> <%= message %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <script>
+              $( document ).on('turbolinks:load', function() {
+                $('.alert').animateCss('bounceInDown');
+              });
+            </script>
+          </div>
+        <% end %>
+        <h1>
+          <%= yield :page_header %>
+        </h1>
+      </div>
+        <%= yield %>
+        <div class="col-xs-12">
+        <%= render 'layouts/partials/footer' %>
+        </div>
+  </body>
+  <%if logged_in? && session[:welcome_from_tradies].present?%>
+    <footer class="navbar-default navbar-fixed-bottom">
+        <div class="container">
+          <div class="pull-right"><a id="dismiss-welcome-alert"><i class="fa fa-2x fa-times-circle" aria-hidden="true"></i></a></div>
+          <p><strong><i class="fa fa-1x fa-heart"></i></strong><i><strong> from Tradies:</strong> </i>
+          Welcome <%=current_user.name%>! 
+        We are working hard to improve your experience on our website.
+          Please, send us an email at <i>contact@tradies.us</i> if you have any questions, feedbacks, or new features that you would like us to build in the future!</p>
+        </div>
+    </footer>
+    <script>
+      $("#dismiss-welcome-alert").click(function(){
+          $("footer").hide();
+      });
+    </script>
+    <%= session.delete(:welcome_from_tradies)%>
+  <%end%>
+  <%if session[:sell_for_you].present?%>
+    <footer class="navbar-default navbar-fixed-bottom">
+        <div class="container">
+          <div class="pull-right"><a id="dismiss-welcome-alert"><i class="fa fa-2x fa-times-circle" aria-hidden="true"></i></a></div>
+          <p><strong><i class="fa fa-handshake-o" aria-hidden="true"></i></strong><i><strong> with Tradies:</strong> </i>
+          Welcome
+          <%if logged_in? %> 
+            <%=current_user.name %>! 
+          <% else %>
+            visitor!
+          <% end %>
+          Do you want us to sell on behalf of you with free of charge?
+          Please, send us an email at <i>admin@tradies.us</i>. We are happy to help you.</p>
+        </div>
+    </footer>
+    <%= session.delete(:sell_for_you)%>
+    <script>
+      $("#dismiss-welcome-alert").click(function(){
+          $("footer").hide();
+      });
+    </script>
+    <%= session.delete(:welcome_from_tradies)%>
+  <%end%>
+</html>

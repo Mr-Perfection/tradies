@@ -1,0 +1,2 @@
+module ReviewActivationsHelper
+end

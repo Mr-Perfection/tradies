@@ -1,0 +1,49 @@
+payment_method:
+  - Tradies Checkout
+  - Cash
+  - Both
+cities:
+  - Berkeley
+  - Fremont
+  - Hayward
+  - Oakland
+  - Mountain View
+  - Milpitas
+  - Palo Alto
+  - San Francisco
+  - Sacramento
+  - Santa Clara
+  - San Jose
+  - San Mateo
+  - Union City
+states:
+  - CA
+  - California
+conditions:
+  - New
+  - Refurbished
+  - Used
+categories:
+  - Appliances
+  - Auto
+  - Books
+  - Bikes
+  - Boats
+  - Beverages
+  - Beauty
+  - Electronics
+  - Events
+  - Food
+  - Household
+  - Housing
+  - Hardware
+  - Health
+  - Kids
+  - Tickets
+  - Toys
+  - Tools
+  - Sporting
+  - Software
+  - Service
+  - Pets
+  - Misc.

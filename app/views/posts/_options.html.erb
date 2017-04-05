@@ -1,0 +1,30 @@
+<div class="center">
+  <p>
+    <% if current_user?(post.owner) %>
+      <%= mail_to "contact@tradies.us", subject: "#{current_user.name} is reporting the interested user for #{post.subject} at #{post.street_address} #{post.city}, #{post.state}"  do%> 
+        <span class="glyphicon glyphicon-flag"></span> report
+      <% end %>
+      <% if post.sold == false %>
+        | 
+        <%= link_to "#", data: {toggle: "modal", target: "#edit-post-form"} do%>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> edit post</a> | 
+        <%end%>
+        <%= link_to "/posts/photos/#{post.id}" do%>
+          <i class="fa fa-picture-o" aria-hidden="true"></i> edit photos</a> | 
+        <%end%>
+        |
+        <%= link_to  post, method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa fa-times" aria-hidden="true"></i> delete
+        <%end%>
+      <% end %>
+      <%= render 'shared/edit_post_form_modal', post: post%>
+      <script>
+          $('#edit-post-form').appendTo("body");
+      </script>
+    <% else %>
+      <%= mail_to "contact@tradies.us", subject: "#{current_user.name} is reporting the #{post.subject} at #{post.street_address} #{post.city}, #{post.state}" do %>
+        <span class="glyphicon glyphicon-flag"></span> report this post
+      <% end %>
+    <% end %>
+  </p>
+</div>

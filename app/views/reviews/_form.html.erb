@@ -1,0 +1,17 @@
+<%= form_for([@user, @review]) do |f| %>
+  <%= render 'shared/error_messages',  object: f.object %>
+  
+  <div class="field">
+    <%= f.label "Are you satisfied?" %>
+    <%= f.check_box :satisfied, default: true, class: "checkbox"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment, size: "8x8"%>
+  </div>
+  <div class="actions">
+    <%= f.submit yield(:buttom_text), class: "btn btn-default btn-block" %>
+  </div>
+<% end %>
+

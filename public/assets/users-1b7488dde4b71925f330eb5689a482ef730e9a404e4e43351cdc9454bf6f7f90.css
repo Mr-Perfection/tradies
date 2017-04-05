@@ -1,0 +1,41 @@
+/* line 8, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+.tradies-team {
+  margin-left: 65%;
+}
+
+/* line 15, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+.center {
+  padding-left: 13%;
+  padding-right: 13%;
+}
+
+/* line 19, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+.garvatar-profile {
+  padding-top: 1.7%;
+  padding-right: 5%;
+  padding-left: 10%;
+}
+
+/* line 25, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+.posts-center {
+  width: 150px;
+}
+
+/* line 33, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+a .delete-account {
+  color: white;
+}
+
+/* line 37, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+aside section.user-info {
+  margin-top: 3%;
+  padding-left: 30%;
+}
+/* line 47, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+aside section.user-info .info-content a {
+  color: #d1e8ff !important;
+}
+/* line 48, /Users/StephenLee/sites/tradies/app/assets/stylesheets/users.scss */
+aside section.user-info .info-content p {
+  line-height: 0.2em;
+}

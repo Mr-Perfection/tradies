@@ -1,0 +1,21 @@
+<% provide(:title, 'All users') %>
+
+<% if  current_user.admin == true %>
+	<h1>All users <span class="badge"><%= @users.size %></span></h1>
+	<ul class="users">
+	  <% @users.each do |user| %>
+	    <%= render user%>
+	  <% end %>
+	  <!-- you can rewrite it as render @users which is equivalent as above. -->
+	</ul>
+	<%= will_paginate %>
+	</br>
+	<h1>Inactivated users <span class="badge"><%= @inactive_users.size %></span></h1>
+	<ul class="users">
+	  <% @inactive_users.each do |user| %>
+	    <%= render user%>
+	  <% end %>
+	  <!-- you can rewrite it as render @users which is equivalent as above. -->
+	</ul>
+	<%= will_paginate %>
+<% end %>

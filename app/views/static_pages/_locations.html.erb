@@ -1,0 +1,45 @@
+<div class="locations">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    	<div class="panel panel-default location-panel">
+    		<div class="panel-heading"><h3 class="text-center">Locations <i class="fa fa-question-circle" data-toggle="popover" title="Which location?" data-content="Click or tap onto any of the locations that you are interested in buying items from. Currently, we are only available in CA." data-placement="bottom" aria-hidden="true"></i></h3></div>
+    		<div class="panel-content text-center">
+    			<ul class="nav nav-pills" role="tablist">
+    				<li role="presentation" class="active"><a href="/search/Sacremento">Sacremento, CA <span class="badge"><%= @cities["Sacremento"]%></span></a></li>
+    				<li role="presentation" class="active"><a href="/search/San%20Francisco">San Francisco, CA <span class="badge"><%= @cities["San Francisco"]%></span></a></li>
+    				<li role="presentation" class="active"><a href="/search/Berkeley">Berkeley, CA <span class="badge"><%= @cities["Berkeley"]%></span></a></li>
+    				<li role="presentation" class="active"><a href="/search/Fremont">Fremont, CA <span class="badge"><%= @cities["Fremont"]%></span></a></li>
+    				<li role="presentation" class="active"><a href="/search/Santa%20Clara">Santa Clara, CA<span class="badge"><%= @cities["Santa Clara"] %></span></a></li>
+					<li role="presentation" class="active"><a href="/search/San%20Jose">San Jose, CA <span class="badge"><%= @cities["San Jose"]%></span></a></li>
+					<li role="presentation" class="active"><a href="/search/Palo%20Alto">Palo Alto, CA <span class="badge"><%= @cities["Palo Alto"]%></span></a></li>
+					<li role="presentation" class="active"><a href="/search/Oakland">Oakland, CA <span class="badge"><%= @cities["Oakland"]%></span></a></li>
+    			</ul>
+    		</div>
+    	</div>
+    </div>
+    <div id="posts">
+		<div class="col-xs-12"><h3 class="text-center"><strong>Posts <span class="badge"><%= @posts_count %></span></strong></h3></div>
+		<div id="show_content">
+			<% if @posts.present? %>
+				<% @posts.each do |p| %>
+		    	<div class="col-xs-6">
+		    		<%= render 'posts/post', post: p%>
+		    	</div>
+		   		<% end %>
+			<% end %>
+		</div>
+		<div id="show_content_on_mobile">
+			<div class="col-xs-12">
+			    <% if @posts.present? %>
+			        <%= render @posts, cached: true%>
+			      <%= will_paginate @posts %>
+			    <% else %>
+					 <p class="text-center">Items not found...:(</p>
+			    <%end%>
+		    </div>
+		</div>
+	</div>
+	<script>
+		$('#posts').animateCss('fadeIn');
+	</script>
+	
+</div>

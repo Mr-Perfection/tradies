@@ -1,0 +1,11 @@
+<h1>Tradies</h1>
+<p>Hi <%= @user.name %>,</p>
+<p>Someone has just expressed interest in your item on <strong><i>Tradies</i></strong>!</p>
+<p>Click on the link below to see who is interested in your post and start communicating with the buyer:</p>
+<p>
+	<%= link_to "Go to my Activities", root_url + "users/posts/#{@user.id}" %>
+</p>
+</br>
+</br>
+<p>Wish you the best,</p>
+<p><strong><i>Tradies</i></strong> Team</p>

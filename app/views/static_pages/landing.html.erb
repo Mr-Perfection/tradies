@@ -1,0 +1,105 @@
+<% provide(:title, 'Home') %>
+<% provide(:buttom_text, 'Create my account')%>
+<div id="sign-up">
+	<header>
+	    <div class="header-content">
+	        <div class="header-content-inner text-center">
+	        	<h1 id="landing-page-title">Welcome to Tradies!</h1>
+	        	<hr>
+	            <p><strong><i>Tradies</i></strong> provides you the best experience when buying and selling.</p>
+	            <div class="center-block">
+	            	<%= link_to  "Browse items", home_path, class: "btn btn-default btn-lg", id: 'browse-items'%>
+				</div>
+	        </div>
+	    </div>
+	</header>
+	<section class="bg-secondary" id="learn-more">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-12 text-center">
+	                <h2 class="section-heading">What is <strong><i>Tradies</i></strong>?</h2>
+	                <hr class="primary">
+	            </div>
+	        </div>
+	    </div>
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-3 col-md-6 text-center">
+	                <div class="service-box">
+	                    <i class="fa fa-4x fa-exchange text-primary sr-icons"></i>
+	                    <h3>Successful Trades</h3>
+	                    <p class="text-muted">From household items and goods to electronics and hardware: start <strong>trading with people around you with our secure Tradies checkout.</strong></p>
+	                    <i><small><strong><%= link_to "Learn about how to trade at Tradies", help_path %></strong></small></i>
+	                </div>
+	            </div>
+	            <div class="col-lg-3 col-md-6 text-center">
+	                <div class="service-box">
+	                    <i class="fa fa-4x fa-check-circle text-primary sr-icons" id="check-circle-landing"></i>
+	                    <h3>Trust</h3>
+	                    <p class="text-muted">We provide our own <strong> verified tradies that you can trust and rely on</strong> to sell items on behalf of you.</p>
+	                    <i><small><strong><%= link_to "Email us at admin@tradies.us"%></strong></small></i>
+	                </div>
+	            </div>
+	            <div class="col-lg-3 col-md-6 text-center">
+	                <div class="service-box">
+	                    <i class="fa fa-4x fa-globe text-primary sr-icons"></i>
+	                    <h3>Community</h3>
+	                    <p class="text-muted">Anyone who wants to buy and sell items belongs to 
+	                    this community where we value <strong>integrity, respect, and transparency</strong>.</p>
+
+	                </div>
+	            </div>
+	            <div class="col-lg-3 col-md-6 text-center">
+	                <div class="service-box">
+	                    <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+	                    <h3>Built With Care</h3>
+	                    <p class="text-muted">We always value your feedbacks and are open to any suggestions to <strong>improve your experience in buying and selling. </strong>
+	                    </p>
+	                    <i><small><strong><%= link_to "Email us at contact@tradies.us"%></strong></small></i>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+	<section class="bg-posts">
+		<div class="container container-medium">
+			<div class="row">
+				<div id="posts">
+					<div class="col-xs-12">
+						<h2 class="text-center">Most Recent Posts</h2>
+					</div>
+					<% if @posts.present? %>
+					    <% @posts.each do |p| %>
+					    	<div class="col-xs-12 col-sm-4">
+					    		<%= render 'posts/post', post: p, cached: true%>
+					    	</div>
+					   	<% end %>
+					<% else %>
+						<div class="col-xs-12">
+							<p class="text-center">No one has posted any items yet... Be the first one to post!</p>
+							<p class="text-center"><i class="fa fa-3x fa-meh-o" aria-hidden="true"></i></p>
+						</div>
+					<% end %>
+				</div>
+				<div class="col-xs-12">
+				</div>
+			</div>
+		</div>	
+	</section>
+	<section class="bg-primary" id="join-tradies">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-8 col-lg-offset-2 text-center">
+	                <h2 class="section-heading">What are you waiting for?</h2>
+	                <hr class="primary">
+	            </div>
+	        </div>
+	    </div>
+	    <div class="text-center" id="sign-up-button">
+	    	<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#sign-up-modal">
+				  Join Now
+			</button>
+			<%= render 'shared/signup_modal'%>
+		</div>
+	</section>
+</div>

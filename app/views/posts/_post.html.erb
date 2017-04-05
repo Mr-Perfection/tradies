@@ -1,0 +1,75 @@
+
+<%= content_tag :div, class: 'panel panel-default', id: "post_#{post.id}", style:"padding: 2px;" do %>
+  <div class='panel-body'>
+    
+    <div class="row">
+        <div class="col-xs-12">
+          <div>
+            <% if post.post_attachments.any? %>
+             <%= link_to image_tag(post.first_post_attachment.avatar, class:"img-responsive img-thumbnail"), post_path(post)%> 
+            <% else %>
+              <%= link_to gravatar_for(post.owner, size: 400), post_path(post) %>
+            <% end %>
+          </div>
+          <h4 class="price">
+            <b><%=truncate(number_to_currency(post.price, :unit => "$"), :length => 12)%></b>
+          </h4>
+          <h4 class="location-on-top">
+            <span class="glyphicon glyphicon-map-marker"></span> <%= sanitize post.location %>
+          </h4>
+          <div class="impression-count">
+            <small><span class="glyphicon glyphicon-eye-open"></span> <%= post.impression_count%></small>
+          </div>
+          <% if post.sold == false && post.interested_users_present %>
+            <div class="interested-users-count">
+              <span class="glyphicon glyphicon-fire"></span>
+              <%= sanitize post.interested_users_with_words%> interested!
+            </div>
+          <% end %>
+        </div>
+        <% if post.sold == true %>
+          <div class="sold-mark">
+            <%= image_tag "sold-mark.png", class: "img-responsive"%>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="text-center">
+          <small class="created-at">
+            <span class="glyphicon glyphicon-pushpin"></span> <%= sanitize time_ago_or_at(post.created_at)%>
+          </small>
+          <div class="text-center">
+            <% if logged_in? %>
+              <%= mail_to "contact@tradies.us", subject: "#{current_user.name} is reporting the #{post.subject} at #{post.street_address} #{post.city}, #{post.state}" do %>
+              <span class="glyphicon glyphicon-flag"></span> report
+              <% end %>
+            <% end %>
+            <% if current_user?(post.owner) %>
+             | 
+              <%= link_to "delete", post, method: :delete,
+                                   data: { confirm: "Are you sure?" } %> 
+            <%end%>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        
+        <%= link_to user_path(post.owner) do%> 
+          <% if post.tradies? %>
+            <div class="pull-right"><button class="btn btn-default">Verified Tradie</button></div>
+          <% else %>
+            <div class="pull-left"><%= gravatar_for post.owner, {size: 50}%></div>
+            <div class="user-footer">
+              <strong><%= post.user_first_name%></strong>
+              <p><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= post.user_up_votes%> <span class="thumbs-down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <%= post.user_down_votes%> </span></p>
+            </div>
+          <% end %>
+
+        <%end%>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+  <div class="review-partial">
+    <div class="panel-heading">
+      <div class="pull-left">
+        <% if review.satisfied %>
+         <i class="fa fa-3x fa-thumbs-o-up" aria-hidden="true"></i> 
+        <% else %>
+          <i class="fa fa-3x fa-thumbs-o-down" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <div style="padding-left: 30%;">
+        <strong>
+          <% if review.reviewer.present? %>
+            <%= link_to user_path(review.reviewer) do%> 
+              <%= gravatar_for review.reviewer, {size: 50}%>
+              <strong><%= review.reviewer_name%></strong>
+              <p><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= review.reviewer_up_votes%> <span class="thumbs-down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <%= review.reviewer_down_votes%> </span></p>
+            <% end %>
+          <%else%>
+            User not found!
+          <%end%>
+        </strong>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+
+    <%= review.comment %>
+  </div>
+  <div class="panel-footer">submitted by 
+  <% if review.reviewer.present? %>
+    <%= link_to review.reviewer_name, review.reviewer%> on <%= review.created_at.to_date %> 
+  <%else%>
+    User not found on <%= review.created_at.to_date %>
+  <%end%>
+    <span>
+      <% if review.reviewer.present? && current_user?(review.reviewer)%>
+        <%= link_to "edit", edit_user_review_path(user_id: @user.id, id: review.id) %> | 
+        <%= link_to "delete", user_review_path(user_id: @user.id, id: review.id), method: :delete,
+               data: { confirm: "You sure?" } %> 
+      <% end %>
+    </span>
+  </div>
+</div>

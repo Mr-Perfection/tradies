@@ -1,0 +1,36 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <td><strong>Ratings: </strong></td>
+      <% upvotes_count = user.upvotes_size%>
+      <% downvotes_count = user.downvotes_size%>
+      <td> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= upvotes_count%> <span class="thumbs-down"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <%= downvotes_count%> </span> 
+      </td>
+    </tr>
+    <tr>
+      <td><strong>email: </strong></td>
+      <% if logged_in? %>
+        <% if user.id  == current_user.id%>
+          <td><%= user.email %></td>
+        <% else %>
+          <td><i class="fa fa-smile-o" aria-hidden="true"></i> this is top secret.</td>
+        <% end%>
+      <% else %>
+        <td>
+          <strong> <i class="fa fa-2x fa-smile-o" aria-hidden="true"></i></strong>
+        </td>
+      <% end %>
+   </tr>
+    <tr>
+      <td><strong>description: </strong></td>
+      <td><%=user.description %></td>
+    </tr>
+    <tr>
+      <td><strong>member since: </strong></td>
+      <td><%=user.created_at.to_date %></td>
+    </tr>
+  </tbody>
+</table> 
+<% if current_user?(user) %>
+  <p class="center"><%= link_to 'Update profile', edit_user_path(user), class: 'btn btn-default btn-large btn-medium btn-small'%></p>
+<% end %>

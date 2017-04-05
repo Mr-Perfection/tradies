@@ -1,0 +1,10 @@
+<%= form_for(@post_attachment) do |f| %>
+  <%= render 'shared/error_messages',  object: f.object %>
+  <%= image_tag @post_attachment.avatar %>
+  <%= hidden_field_tag :post_id, @post_attachment.post_id %>
+  </br>
+  <%= f.label "Image" %>
+  <%= f.file_field :avatar, class: 'form_control', required: true%>
+  
+  <%= f.submit yield(:buttom_text), class: "btn btn-default" %>
+<% end %>

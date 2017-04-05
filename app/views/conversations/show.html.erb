@@ -1,0 +1,36 @@
+<% @conversation.participants.each do |participant| %>
+  <% unless participant == current_user %>
+    <% page_header participant.name %>    
+  <% end %>
+<% end %>
+<div class="row">
+    <div class="col-xs-10 col-lg-8 col-md-8 col-sm-10 col-md-offset-2 col-lg-offset-2 col-sm-offset-1 col-xs-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading"><%= @conversation.subject %></div>
+        <div class="panel-body">
+          <div class="messages">
+            <% @conversation.receipts_for(current_user).reverse_each do |receipt| %>
+              <div class="media">
+                <% message = receipt.message %>
+                <div class="col-xs-1 col-lg-1 col-md-1 col-sm-1">
+                  <%= gravatar_for_message message.sender %>
+                </div>
+                <div class="col-xs-10 col-lg-10 col-md-10 col-sm-10">
+                  <h6 class="media-heading"><strong><%= link_to message.sender.name, user_path(message.sender)%></strong></h6>
+                  <p class="message-body"><%= message.body %></p>
+                  <small class="message-timestamp"><%= message.created_at.strftime("%I:%M %p on %m/%d/%Y") %></small>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= form_tag reply_conversation_path(@conversation), method: :post do %>
+        <div class="form-group">
+          <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
+        </div>
+        <%= submit_tag "Send Message", class: 'btn btn-default' %>
+      <% end %>
+      <%= link_to('back to Inbox', conversations_path,class: 'btn btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-12') %>
+    </div>
+</div>

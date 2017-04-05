@@ -1,0 +1,10 @@
+<small><b>contact via:</b></small>
+<h3>
+	<i class="fa fa-comments" aria-hidden="true"></i>
+	<% if post.email_address.present?%>
+	  <i class="fa fa-envelope" aria-hidden="true"></i>
+	<% end %>
+	<% if post.phone_number.present?%>
+	  <i class="fa fa-phone-square" aria-hidden="true"></i>
+	<% end %>
+</h3>

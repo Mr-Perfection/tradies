@@ -1,0 +1,56 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$content-color: #d1e8ff;
+$tradies-color: #0a3c6d;
+$gray-medium-light: #eaeaea;
+
+.tradies-team {
+	margin-left: 65%;
+}
+// .avg-rating {
+// 	padding-left: 40%;
+// 	padding-right: 20%;
+// }
+.center {
+	padding-left: 13%;
+	padding-right: 13%;
+}
+.garvatar-profile {
+	padding-top: 1.7%;
+	padding-right: 5%;
+	padding-left: 10%;
+	 // margin-top: 15%;	
+}
+.posts-center {
+	
+    width: 150px;
+}
+
+// a {
+// 	color: black;
+// }
+a .delete-account {
+	color: white;
+}
+
+aside section.user-info {
+	// padding-right: 10%;
+	// padding-left: 10%;
+	// text-align: center;
+	// width: 55%;
+    margin-top: 3%;
+    padding-left: 30%;
+    // margin-right: 30%;
+    // margin-right: 30%;
+	.info-content {
+		a {color: $content-color !important;}
+		p {line-height: 0.2em;}
+		small{}
+	}
+	
+
+	// small {
+	// 	margin: auto;
+	// }
+}

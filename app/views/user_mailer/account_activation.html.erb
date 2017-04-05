@@ -1,0 +1,18 @@
+<h1><i>Tradies</i></h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>
+Welcome to <strong><i>Tradies</i></strong>, the community where trustworthy and respectful individuals buy and sell items with locals!
+</p>
+<p>
+	I am so excited to hear that you want to join us! Click on the link below to activate your account in our community:
+</p>
+<p>
+	<%= link_to "Activate your account", edit_account_activation_url(@activation_token,
+                                                    email: @user.email) %>
+</p>
+</br>
+</br>
+<p>See you shortly,</p>
+<p><strong><i>Tradies</i></strong> Team</p>

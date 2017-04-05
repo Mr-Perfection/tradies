@@ -1,0 +1,8 @@
+<% if post.payment_method == "Tradies Checkout"%>
+  <i class="fa fa-check-square-o" aria-hidden="true"></i> Tradies Checkout
+<% elsif post.payment_method == "Cash" %>
+  <i class="fa fa-money" aria-hidden="true"></i> Cash
+<% else %>
+  <i class="fa fa-check-square-o" aria-hidden="true"></i> Tradies Checkout, <i class="fa fa-money" aria-hidden="true"></i> Cash
+<% end %>
+<% if !@post.is_firm? %>, Negotiable<% end %>

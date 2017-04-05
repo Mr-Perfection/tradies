@@ -1,0 +1,149 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+$tradies-color: #0a3c6d;
+$sky-blue: #00b0ff;
+.page-header {
+  border-bottom: 0px solid #eeeeee;
+}
+
+button.close {color: white;}
+.badge {background-color: $tradies-color; color: white;}
+.notifications-count {
+	.badge{
+		background-color: white; color: $tradies-color;
+	}
+} 
+.label-default { background-color: $tradies-color;}
+li { font-family: avenir, 'avenir next'; font-size: 1.4em;}
+
+.help-content {
+	padding-left: 8px;
+	padding-right: 8px;
+	p {
+		padding-left: 13px;
+		padding-right: 13px;
+	}
+}
+
+#posts {
+	-webkit-animation-duration: 1.0s;
+	-webkit-animation-delay: 1.1s;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-duration: 1.0s;
+	-moz-animation-delay: 1.1s;
+	-moz-animation-iteration-count: 1;
+}
+.locations {
+	-webkit-animation-duration: 1.0s;
+	-webkit-animation-delay: 0.8s;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-duration: 0.8s;
+	-moz-animation-delay: 0.8s;
+	-moz-animation-iteration-count: 1;
+	// margin-top: 4%;
+	// padding-top: 2%;
+	// padding-bottom: 5%;
+	// padding-left: 15%;
+	// padding-right: 15%;
+}
+.search-bar {
+	-webkit-animation-duration: 1.0s;
+	-webkit-animation-delay: 1.3s;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-duration: 1.0s;
+	-moz-animation-delay: 1.3s;
+	-moz-animation-iteration-count: 1;
+}
+
+.categories {
+
+	-webkit-animation-duration: 1.0s;
+	-webkit-animation-delay: 0.8s;
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-duration: 1.0s;
+	-moz-animation-delay: 0.8s;
+	-moz-animation-iteration-count: 1;
+}
+
+.about-profile {
+	margin-left: 8%;
+
+	// padding-top: %;
+	p {
+		padding-left: 13px;
+		padding-right: 13px;
+	}
+}
+.about-profile-content {
+	margin-top: 20px;
+}
+
+
+
+
+h1 .logo{
+	color: $tradies-color;
+	font-weight: bold;
+  	font-style: italic;
+	&:hover {
+    color: white;
+    text-decoration: none;
+  } 
+}
+.home {
+	padding-left: 15%;
+	padding-bottom: 5%;
+	padding-right: 15%;
+	.input-group {
+    	display: table;
+	}
+}
+.hideOverflow
+{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    width:100%;
+    display:block;
+}
+.breakword{
+	word-wrap: break-word;
+}
+
+
+// .learn-more {
+   
+// 	-webkit-animation-duration: 1.0s;
+// 	-webkit-animation-delay: 1.0s;
+// 	-webkit-animation-iteration-count: 1;
+// 	-moz-animation-duration: 1.0s;
+// 	-moz-animation-delay: 1.0s;
+// 	-moz-animation-iteration-count: 1;
+//    	background-color: rgba(255,255,255, 0.5);
+// 	margin-top: 5%;
+// 	margin-left: 8%;
+// 	margin-right: 8%;
+// 	padding: 2.5%;
+
+// }
+
+// .learn-more-section {
+// 	margin-right: 4.1%;
+// 	margin-left: 4.1%;
+// }
+
+// .learn-more h3 {
+//   font-weight: bold;
+// }
+
+// .learn-more a {
+//   color: $sky-blue;
+// }
+.search-home .input-group .input-group-addon,
+.search-home .input-group .input-group-btn {
+    white-space: nowrap;
+    width: 1%;
+}
+.search-home .input-group .form-control {
+    width: 100%;
+}
