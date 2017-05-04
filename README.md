@@ -1,5 +1,5 @@
 # Tradies
-Welcome to my Marketplace application! [Tradies](http://www.tradies.us) is where people go to buy and sell items! I originally built to help friends buy and sell items locally with simple user interface and to learn building a website from scratch. This was my first scalable, full-stack RoR application.
+Welcome to my Marketplace application or [CtoC](https://en.wikipedia.org/wiki/Customer_to_customer) ! [Tradies](http://www.tradies.us) is where people go to buy and sell items! I originally built to help friends buy and sell items locally with simple user interface and to learn building a website from scratch. This was my first scalable, full-stack RoR application.
 
 ![alt text](demos/intro.png "Introduction")
 
